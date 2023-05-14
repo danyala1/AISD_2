@@ -153,3 +153,43 @@ void testing(int N, int chosing, int number_circle, int variant_create_vector)
 
 }
 
+int main() {
+	//testing (размер вектора,выбор сортировки, количество циклов,выбор генерации вектора)
+
+	std::cout << "\nAverage value on 100 vectors\n";
+	for (int i = 1; i < 3; i++)
+	{
+		testing(1000, i, 100, 1);
+		testing(2000, i, 100, 1);
+		testing(3000, i, 100, 1);
+		testing(10000, i, 100, 1);
+		testing(25000, i, 100, 1);
+		testing(50000, i, 100, 1);
+		testing(100000, i, 100, 1);
+	}
+
+	std::cout << "\nValue on sorted vector\n";
+	for (int i = 1; i < 3; i++)
+	{
+		testing(1000, i, 1, 2);
+		testing(2000, i, 1, 2);
+		testing(3000, i, 1, 2);
+		testing(10000, i, 1, 2);
+		testing(25000, i, 1, 2);
+		testing(50000, i, 1, 2);
+		testing(100000, i, 1, 2);
+	}
+
+	std::cout << "\nValue on reverse-sorted vector\n";
+	for (int i = 1; i < 3; i++)
+	{
+		testing(1000, i, 1, 3);
+		testing(2000, i, 1, 3);
+		testing(3000, i, 1, 3);
+		testing(10000, i, 1, 3);
+		testing(25000, i, 1, 3);
+		testing(50000, i, 1, 3);
+		testing(100000, i, 1, 3);
+	}
+
+}
