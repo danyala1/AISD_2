@@ -104,3 +104,52 @@ stats sorting_shell(std::vector<int> Vector) {
 	return A;
 }
 
+void testing(int N, int chosing, int number_circle, int variant_create_vector)
+{
+
+	stats AVG;
+
+	for (int i = 0; i < number_circle; i++)
+	{
+		std::vector<int> TMP = create_vector(N, variant_create_vector);
+		stats tmp;
+		if (chosing == 1) { // choice
+			tmp = sorting_choice(TMP);
+
+			AVG.comparison_count += tmp.comparison_count;
+			AVG.copy_count += tmp.copy_count;
+			AVG.time += tmp.time;
+		}
+		else { // shell 
+			tmp = sorting_shell(TMP);
+
+			AVG.comparison_count += tmp.comparison_count;
+			AVG.copy_count += tmp.copy_count;
+			AVG.time += tmp.time;
+		}
+
+		//AVG.comparison_count += tmp->comparison_count ;
+		//AVG.copy_count += tmp->copy_count / 100;
+		//AVG.time += tmp->time / 100;
+	}
+	std::ofstream out("log.txt", std::ios::app);
+	if (chosing == 1) { // выбор
+		std::cout << "The  choice sorting  on vector size " << N << "\t" << AVG.comparison_count / number_circle << " \t" << AVG.copy_count / number_circle << "\t" << AVG.time / number_circle << std::endl;
+		if (out.is_open())
+		{
+			out << "The  choice sorting  on vector size " << N << "\t" << AVG.comparison_count / number_circle << " \t" << AVG.copy_count / number_circle << "\t" << AVG.time / number_circle << std::endl;
+		}
+	}
+	else { // shell 
+		std::cout << "The shell sorting  on vector size " << N << "\t" << AVG.comparison_count / number_circle << " \t" << AVG.copy_count / number_circle << "\t" << AVG.time / number_circle << std::endl;
+		if (out.is_open())
+		{
+			out << "The shell sorting  on vector size " << N << "\t" << AVG.comparison_count / number_circle << " \t" << AVG.copy_count / number_circle << "\t" << AVG.time / number_circle << std::endl;
+		}
+	}
+
+	out.close();
+
+
+}
+
